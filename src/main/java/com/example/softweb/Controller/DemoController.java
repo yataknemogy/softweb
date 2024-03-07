@@ -20,7 +20,7 @@ public class DemoController {
     };
     @GetMapping("/login")
     public String login(){
-        return "perform_login";
+        return "login";
     }
     @GetMapping("/register")
     public String register(){
