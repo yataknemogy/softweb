@@ -38,17 +38,17 @@ public  class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/login*", "/css/**", "/js/**", "/images/**").permitAll() // Разрешите доступ к этим путям без аутентификации
+                .antMatchers("/login*", "/css/**", "/js/**", "/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login") // Укажите кастомную страницу логина
-                .loginProcessingUrl("/perform_login") // Укажите URL для обработки логина
-                .defaultSuccessUrl("/home", true) // Перенаправление после успешного логина
-                .failureUrl("/login?error=true") // Перенаправление при ошибке логина
+                .loginPage("/login")
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/home", true)
+                .failureUrl("/login?error=true")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout=true") // Перенаправление после логаута
+                .logoutSuccessUrl("/login?logout=true")
                 .permitAll()
                 .and()
                 .csrf()
