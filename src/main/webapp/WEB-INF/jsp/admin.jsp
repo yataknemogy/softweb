@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <title>Log in with your account</title>
 </head>
-
 <body>
 <div>
     <table>
