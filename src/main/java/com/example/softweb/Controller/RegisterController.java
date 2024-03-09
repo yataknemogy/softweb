@@ -15,31 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
+
     @Autowired
     private UserService userService;
 
     @GetMapping
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
-
         return "register";
     }
+
     @PostMapping("/register")
-    public String addUser(@ModelAttribute("userForm") @Validated User userForm, BindingResult bindingResult, Model model) {
+    public String addUser(@ModelAttribute("userForm") @Validated User userForm,
+                          BindingResult bindingResult,
+                          Model model) {
 
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        if (!userForm.getPassword().equals(userForm.getPassword())) {
+
+        if (!userForm.getPassword().equals(userForm.getPasswordConfirm())) {
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "register";
         }
 
-        if (!userService.saveUser(userForm)){
+        if (!userService.saveUser(userForm)) {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "register";
         }
 
-        return "redirect:/";
+        return "redirect:/registration-success";
     }
 }
+

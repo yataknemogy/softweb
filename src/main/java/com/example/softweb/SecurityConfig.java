@@ -24,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     AdminService adminService;
 
+    @Autowired
+    private CustomAccessDeniedHandler accessDeniedHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -56,12 +59,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll()
+                .logoutSuccessUrl("/")
                 .and()
                 .rememberMe()
                 .key("uniqueAndSecret")
                 .rememberMeParameter("remember-me")
                 .rememberMeCookieName("remember-me-cookie")
-                .tokenValiditySeconds(24 * 60 * 60);
+                .tokenValiditySeconds(24 * 60 * 60)
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
     }
 
     @Bean
