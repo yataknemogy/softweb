@@ -8,13 +8,13 @@
 <head>
     <meta charset="utf-8">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/style.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/static/style.css"/>">
 </head>
 
 <body>
 <div class="container">
     <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/register">
-        <h2>Регистрация</h2>
+        <h2>Registration</h2>
         <div>
             <form:input type="text" path="username" placeholder="Username" autofocus="true"></form:input>
             <form:errors path="username"></form:errors>${usernameError}
@@ -28,7 +28,7 @@
         </div>
         <button type="submit">Register</button>
     </form:form>
-    <a href="${pageContext.request.contextPath}/index">Main</a>
+    <a href="${pageContext.request.contextPath}/">Main</a>
 </div>
 </body>
 </html>
