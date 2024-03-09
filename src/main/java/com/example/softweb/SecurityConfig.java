@@ -1,6 +1,9 @@
 package com.example.softweb;
 
+import com.example.softweb.Service.AdminService;
+import com.example.softweb.Service.UserService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,6 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public  class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    UserService userService;
+    AdminService adminService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder configureBuild) throws Exception{
@@ -31,22 +38,23 @@ public  class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
-                .antMatchers("/user/**")
-                .hasAnyRole("USER", "ADMIN")
-                .antMatchers("/")
-                .permitAll()
+                .antMatchers("/login*", "/css/**", "/js/**", "/images/**").permitAll() // Разрешите доступ к этим путям без аутентификации
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/home", true)
-                .permitAll()
+                .loginPage("/login") // Укажите кастомную страницу логина
+                .loginProcessingUrl("/perform_login") // Укажите URL для обработки логина
+                .defaultSuccessUrl("/home", true) // Перенаправление после успешного логина
+                .failureUrl("/login?error=true") // Перенаправление при ошибке логина
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();
+                .logoutSuccessUrl("/login?logout=true") // Перенаправление после логаута
+                .permitAll()
+                .and()
+                .csrf()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/access-denied");
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
