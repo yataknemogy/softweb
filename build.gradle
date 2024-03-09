@@ -20,7 +20,7 @@ dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-security'
         implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
         implementation 'javax.servlet:jstl'
-        implementation 'mysql:mysql-connector-java'
+        implementation 'org.postgresql:postgresql:42.2.5'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         implementation 'org.springframework:spring-tx:5.3.15'

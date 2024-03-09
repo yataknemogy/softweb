@@ -1,10 +1,14 @@
 package com.example.softweb.Model;
 
+import com.example.softweb.Model.User;
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Role {
+public class Role implements GrantedAuthority {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,4 +51,8 @@ public class Role {
         this.users = users;
     }
 
+    @Override
+    public String getAuthority() {
+        return login;
+    }
 }
