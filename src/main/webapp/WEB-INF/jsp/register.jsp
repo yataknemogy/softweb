@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/static/style.css"/>">
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
         </div>
         <button type="submit">Register</button>
     </form:form>
-    <a href="${pageContext.request.contextPath}/">Main</a>
+    <a href="${pageContext.request.contextPath}/">Home</a>
 </div>
 </body>
 </html>

@@ -5,9 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Главная</title>
+    <title>Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/static/style.css"/>">
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>
 <body>
 <div>

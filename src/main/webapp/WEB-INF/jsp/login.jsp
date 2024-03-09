@@ -2,13 +2,14 @@
 
 <html>
 <head>
-    <title>Логин</title>
+    <title>Log in</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/style.css">
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>
 <body>
 <div class="container">
     <form action="${pageContext.request.contextPath}/login" method="post">
-        <h2>Login to Your Account</h2>
+        <h2>Log in to Your Account</h2>
         <div>
             <label>Username</label>
             <input type="text" name="login" placeholder="Username" autofocus="true">
