@@ -16,17 +16,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-    implementation 'javax.servlet:jstl'
-    implementation 'mysql:mysql-connector-java'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework:spring-jdbc:4.1.4.RELEASE'
-    implementation 'org.springframework.security:spring-security-taglibs:4.0.4.RELEASE'
-    implementation group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.28.Final'
-    implementation 'org.springframework:spring-tx:5.3.15'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+        implementation 'javax.servlet:jstl'
+        implementation 'mysql:mysql-connector-java'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation 'org.springframework:spring-tx:5.3.15'
 }
 
 tasks.named('test') {
