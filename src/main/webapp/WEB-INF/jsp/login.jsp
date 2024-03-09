@@ -18,9 +18,19 @@
             <label>Password</label>
             <input type="password" name="password" placeholder="Password">
         </div>
+        <div class="remember-me">
+            <input type="checkbox" id="remember-me" name="remember-me" />
+            <label for="remember-me">Remember Me</label>
+        </div>
         <button type="submit" name="submit">Enter</button>
         <p>No profile? <a href="${pageContext.request.contextPath}/register">Register</a></p>
     </form>
+    <%
+        String rememberMeError = (String)request.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+        if (rememberMeError != null) {
+            out.println("<p>Remember Me Error: " + rememberMeError + "</p>");
+        }
+    %>
 </div>
 </body>
 </html>
