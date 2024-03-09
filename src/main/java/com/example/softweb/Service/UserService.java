@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService {
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByLogin(username);
         if(user == null){
             throw new UsernameNotFoundException("User not found!");
         }
@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
     public boolean saveUser(User user) {
-        User existingUser = userRepository.findByUsername(user.getUsername());
+        User existingUser = userRepository.findByLogin(user.getUsername());
         if (existingUser != null) {
             return false;
         }

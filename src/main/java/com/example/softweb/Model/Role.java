@@ -8,16 +8,19 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String login;
+
     @Transient
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
     public Role() {
-
     }
 
-    public Role(String user) {
+    public Role(String login) {
+        this.login = login;
     }
 
     public Long getId() {

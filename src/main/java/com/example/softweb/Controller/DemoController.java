@@ -9,22 +9,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DemoController {
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/admin")
-    public String admin(){
+    @GetMapping("/admin/demo")
+    public String admin() {
         return "pageAdmin";
-    };
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    @GetMapping("/user")
-    public String user(){
-        return "pageUser";
-    };
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
-    @GetMapping("/register")
-    public String register(){
-        return "register";
     }
 
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/user")
+    public String user() {
+        return "pageUser";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
 }

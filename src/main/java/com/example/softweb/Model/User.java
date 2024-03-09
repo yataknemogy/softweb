@@ -14,14 +14,16 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "login")
     private String login;
+
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public User() {
-
     }
 
     public String getLogin() {
@@ -46,22 +48,22 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true; // или добавьте логику проверки срока действия учетной записи
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true; // или добавьте логику проверки блокировки учетной записи
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true; // или добавьте логику проверки срока действия учетных данных
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true; // или добавьте логику проверки активации учетной записи
     }
 
     public Set<Role> getRoles() {
@@ -71,9 +73,11 @@ public class User implements UserDetails {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
