@@ -5,17 +5,13 @@
     <title>Логин</title>
 </head>
 <body>
-
-
 <form action="${pageContext.request.contextPath}/login" method="post">
-    <label>Логин</label>
-    <input type="text" name="login" placeholder="Введите логин">
-    <label>Пароль</label>
-    <input type="password" name="password" placeholder="Введите пароль">
-    <button type="submit" name="submit">Войти</button>
-    <p>Нет профиля? <a href="register.jsp">Зарегистрироваться</a></p>
+    <label>Username</label>
+    <input type="text" name="login" placeholder="Username">
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit" name="submit">Enter</button>
+    <p>No profile? <a href="${pageContext.request.contextPath}/register">Register</a></p>
 </form>
-
 </body>
-
 </html>

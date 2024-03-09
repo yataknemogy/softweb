@@ -37,7 +37,7 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="/">Главная</a>
+    <a href="/${pageContext.request.contextPath}/index">Main</a>
 </div>
 </body>
 </html>

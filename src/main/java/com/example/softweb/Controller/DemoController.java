@@ -19,12 +19,7 @@ public class DemoController {
         return "pageUser";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/register")
+    @GetMapping("/register/demo")
     public String register() {
         return "register";
     }

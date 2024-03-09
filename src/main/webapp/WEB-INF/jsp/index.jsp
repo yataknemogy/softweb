@@ -12,14 +12,14 @@
 <div>
     <h3>${pageContext.request.userPrincipal.name}</h3>
     <sec:authorize access="!isAuthenticated()">
-        <h4><a href="/login">Войти</a></h4>
-        <h4><a href="/registration">Зарегистрироваться</a></h4>
+        <h4><a href="${pageContext.request.contextPath}/login">Log in system</a></h4>
+        <h4><a href="${pageContext.request.contextPath}/register">Register</a></h4>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-        <h4><a href="/logout">Выйти</a></h4>
+        <h4><a href="${pageContext.request.contextPath}/logout">Exit</a></h4>
     </sec:authorize>
-    <h4><a href="/news">Новости (только пользователь)</a></h4>
-    <h4><a href="/admin">Пользователи (только админ)</a></h4>
+    <h4><a href="${pageContext.request.contextPath}/news">News (only user)</a></h4>
+    <h4><a href="${pageContext.request.contextPath}/admin">Users (only admin)</a></h4>
 </div>
 </body>
 </html>
