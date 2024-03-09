@@ -1,21 +1,36 @@
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-<html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Регистрация</title>
 </head>
-<body>
-<form action="${pageContext.request.contextPath}/register" method="post">
-    <label>Логин</label>
-    <input type="text" name="login" placeholder="Введите логин">
-    <label>Пароль</label>
-    <input type="password" name="password" placeholder="Введите пароль">
-    <label>Повторите пароль</label>
-    <input type="password" name="password_check" placeholder="Повторите пароль">
-    <button type="submit" name="submit">Зарегистрироваться</button>
-</form>
-</body>
 
+<body>
+<div>
+    <form:form method="POST" modelAttribute="userForm">
+        <h2>Регистрация</h2>
+        <div>
+            <form:input type="text" path="username" placeholder="Username"
+                        autofocus="true"></form:input>
+            <form:errors path="username"></form:errors>
+                ${usernameError}
+        </div>
+        <div>
+            <form:input type="password" path="password" placeholder="Password"></form:input>
+        </div>
+        <div>
+            <form:input type="password" path="passwordConfirm"
+                        placeholder="Confirm your password"></form:input>
+            <form:errors path="password"></form:errors>
+                ${passwordError}
+        </div>
+        <button type="submit">Зарегистрироваться</button>
+    </form:form>
+    <a href="/">Главная</a>
+</div>
+</body>
 </html>

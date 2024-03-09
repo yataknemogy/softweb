@@ -13,7 +13,7 @@
     <label>Пароль</label>
     <input type="password" name="password" placeholder="Введите пароль">
     <button type="submit" name="submit">Войти</button>
-    <p>Нет профиля? <a href="/register">Зарегистрироваться</a></p>
+    <p>Нет профиля? <a href="register.jsp">Зарегистрироваться</a></p>
 </form>
 
 </body>

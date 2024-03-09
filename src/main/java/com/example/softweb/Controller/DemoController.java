@@ -4,7 +4,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
 public class DemoController {
 
@@ -15,7 +14,7 @@ public class DemoController {
     }
 
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    @GetMapping("/user")
+    @GetMapping("/user/demo")
     public String user() {
         return "pageUser";
     }
