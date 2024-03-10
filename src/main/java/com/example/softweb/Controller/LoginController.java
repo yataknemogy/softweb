@@ -20,6 +20,7 @@ public class LoginController {
     @GetMapping("/login-failure")
     public String loginFailure(Model model) {
         model.addAttribute("error", true);
+        model.addAttribute("errorMessage", "Invalid username or password");
         return "login";
     }
 
@@ -32,4 +33,5 @@ public class LoginController {
     public String logout() {
         return "redirect:/login?logout";
     }
+
 }

@@ -16,8 +16,8 @@ import java.util.*;
 @Service
 public class UserService implements UserDetailsService {
 
-     UserRepository userRepository;
-     RoleRepository roleRepository;
+    UserRepository userRepository;
+    RoleRepository roleRepository;
 
     @Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {

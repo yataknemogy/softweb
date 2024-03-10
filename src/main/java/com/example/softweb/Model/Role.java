@@ -1,9 +1,9 @@
 package com.example.softweb.Model;
 
-import com.example.softweb.Model.User;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -16,8 +16,7 @@ public class Role implements GrantedAuthority {
     @Column(unique = true)
     private String login;
 
-    @Transient
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
     private Set<User> users;
 
     public Role() {
@@ -55,4 +54,18 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return login;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return Objects.equals(login, role.login);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(login);
+    }
+
 }

@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%! User userForm = new com.example.softweb.Model.User(); %>
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +15,8 @@
 
 <body>
 <div class="container">
-    <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/register">
-        <h2>Registration</h2>
+    <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/register/register">
+    <h2>Registration</h2>
         <div>
             <form:input type="text" path="login" placeholder="Username" autofocus="true" />
             <form:errors path="login" cssClass="error" />
@@ -29,8 +30,8 @@
             <form:errors path="passwordConfirm" cssClass="error" />
         </div>
         <div class="remember-me">
-            <input type="checkbox" id="remember-me" name="remember-me" />
-            <label for="remember-me">Remember Me</label>
+            <input type="checkbox" id="remember-me-register" name="remember-me" />
+            <label for="remember-me-register">Remember Me</label>
         </div>
         <button type="submit">Register</button></form:form>
     <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">

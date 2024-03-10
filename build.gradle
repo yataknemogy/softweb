@@ -1,7 +1,8 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.6.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+//    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.example'
@@ -18,14 +19,14 @@ repositories {
 dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter-security'
-        implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-        implementation 'javax.servlet:jstl'
-        implementation 'org.postgresql:postgresql:42.2.5'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
         implementation 'org.springframework:spring-tx:5.3.15'
         implementation 'org.springframework.security:spring-security-taglibs:5.6.0'
         implementation 'org.springframework.boot:spring-boot-starter-validation'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation 'org.postgresql:postgresql:42.2.5'
+        implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+        implementation 'javax.servlet:jstl:1.2'
 }
 
 tasks.named('test') {

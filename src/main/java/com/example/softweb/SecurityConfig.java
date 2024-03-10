@@ -13,8 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static javax.management.Query.and;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -24,12 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     AdminService adminService;
 
-    @Autowired
-    private CustomAccessDeniedHandler accessDeniedHandler;
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
+                .userDetailsService(userService)
+                .passwordEncoder(passwordEncoder())
+                .and()
                 .inMemoryAuthentication()
                 .withUser("user")
                 .password(passwordEncoder().encode("password"))
@@ -65,10 +63,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .key("uniqueAndSecret")
                 .rememberMeParameter("remember-me")
                 .rememberMeCookieName("remember-me-cookie")
-                .tokenValiditySeconds(24 * 60 * 60)
-                .and()
-                .exceptionHandling()
-                .accessDeniedHandler(accessDeniedHandler);
+                .tokenValiditySeconds(24 * 60 * 60);
+//                .authorizeRequests()
+//                .antMatchers("/register/**").permitAll()
+//                .antMatchers("/").hasAnyRole("USER", "ADMIN") // Разрешаем доступ всем пользователям
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .loginProcessingUrl("/login")
+//                .defaultSuccessUrl("/")
+//                .failureUrl("/login?error")
+//                .failureHandler((request, response, exception) -> {
+//                    String errorMessage = "Invalid username or password";
+//                    response.sendRedirect("/login?error=" + errorMessage);
+//                })
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/login?logout")
+//                .permitAll()
+//                .and()
+//                .rememberMe()
+//                .key("uniqueAndSecret")
+//                .userDetailsService(userDetailsService())
+//                .and()
+//                .csrf().disable();
     }
 
     @Bean

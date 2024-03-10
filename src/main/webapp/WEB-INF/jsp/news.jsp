@@ -20,7 +20,7 @@
             <input name="username" type="text" placeholder="Username" autofocus="true"/>
             <input name="password" type="password" placeholder="Password"/>
             <button type="submit">Log In</button>
-            <h4><a href="${pageContext.request.contextPath}/register">Зарегистрироваться</a></h4>
+            <h4><a href="${pageContext.request.contextPath}/register">Registration</a></h4>
         </div>
     </form>
 </div>

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="#" th:action="@{/login}" method="post">
         <h2>Log in to Your Account</h2>
         <div>
             <label>Username</label>
@@ -19,11 +19,14 @@
             <input type="password" name="password" placeholder="Password">
         </div>
         <div class="remember-me">
-            <input type="checkbox" id="remember-me" name="remember-me" />
-            <label for="remember-me">Remember Me</label>
-        </div>
+        <input type="checkbox" id="remember-me-login" name="remember-me" />
+        <label for="remember-me-login">Remember Me</label>
+    </div>
         <button type="submit" name="submit">Enter</button>
         <p>No profile? <a href="${pageContext.request.contextPath}/register">Register</a></p>
+        <c:if test="${error}">
+            <p style="color: red;">Invalid username or password</p>
+        </c:if>
     </form>
     <%
         String rememberMeError = (String)request.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
