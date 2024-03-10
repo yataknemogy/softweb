@@ -1,6 +1,5 @@
 package com.example.softweb;
 
-import com.example.softweb.Service.AdminService;
 import com.example.softweb.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,32 +18,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userService;
-    @Autowired
-    AdminService adminService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userService)
-                .passwordEncoder(passwordEncoder())
-                .and()
-                .inMemoryAuthentication()
-                .withUser("user")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER")
-                .and()
-                .withUser("admin")
-                .password(passwordEncoder().encode("password"))
-                .roles("ADMIN");
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .userDetailsService(userService)
+//                .passwordEncoder(passwordEncoder())
+//                .and()
+//                .inMemoryAuthentication()
+//                .withUser("user")
+//                .password(passwordEncoder().encode("password"))
+//                .roles("USER")
+//                .and()
+//                .withUser("admin")
+//                .password(passwordEncoder().encode("password"))
+//                .roles("ADMIN");
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .disable()
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/register").not().fullyAuthenticated()
+                .antMatchers("/register/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/news").hasRole("USER")
                 .antMatchers("/", "/resources/**").permitAll()
@@ -64,32 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMeParameter("remember-me")
                 .rememberMeCookieName("remember-me-cookie")
                 .tokenValiditySeconds(24 * 60 * 60);
-//                .authorizeRequests()
-//                .antMatchers("/register/**").permitAll()
-//                .antMatchers("/").hasAnyRole("USER", "ADMIN") // Разрешаем доступ всем пользователям
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/login")
-//                .defaultSuccessUrl("/")
-//                .failureUrl("/login?error")
-//                .failureHandler((request, response, exception) -> {
-//                    String errorMessage = "Invalid username or password";
-//                    response.sendRedirect("/login?error=" + errorMessage);
-//                })
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login?logout")
-//                .permitAll()
-//                .and()
-//                .rememberMe()
-//                .key("uniqueAndSecret")
-//                .userDetailsService(userDetailsService())
-//                .and()
-//                .csrf().disable();
     }
 
     @Bean

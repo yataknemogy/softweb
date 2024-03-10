@@ -16,14 +16,20 @@ public class Role implements GrantedAuthority {
     @Column(unique = true)
     private String login;
 
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<User> users;
 
-    public Role() {
+    public Role(Long id, String login) {
+        this.id = id;
+        this.login = login;
     }
 
     public Role(String login) {
         this.login = login;
+    }
+
+    public Role() {
+
     }
 
     public Long getId() {
