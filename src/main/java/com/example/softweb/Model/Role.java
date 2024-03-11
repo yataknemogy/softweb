@@ -19,18 +19,14 @@ public class Role implements GrantedAuthority {
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<User> users;
 
-    public Role(Long id, String login) {
-        this.id = id;
-        this.login = login;
-    }
-
-    public Role(String login) {
+    public Role(long l, String login) {
         this.login = login;
     }
 
     public Role() {
 
     }
+
 
     public Long getId() {
         return id;
@@ -68,6 +64,7 @@ public class Role implements GrantedAuthority {
         Role role = (Role) o;
         return Objects.equals(login, role.login);
     }
+
 
     @Override
     public int hashCode() {

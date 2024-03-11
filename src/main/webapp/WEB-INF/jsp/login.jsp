@@ -11,17 +11,17 @@
     <form action="/login" method="post">
         <h2>Log in to Your Account</h2>
         <div>
-            <label>Username</label>
-            <input type="text" id="login" name="login" placeholder="Username" autofocus="true">
+            <label>Login</label>
+            <input type="text" id="login" name="login" placeholder="Login" required>
         </div>
         <div>
             <label>Password</label>
-            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="password" id="password" name="password" placeholder="Password" required>
         </div>
         <div class="remember-me">
-        <input type="checkbox" id="remember-me-login" name="remember-me" />
-        <label for="remember-me-login">Remember Me</label>
-    </div>
+            <input type="checkbox" id="remember-me-login" name="remember-me" />
+            <label for="remember-me-login">Remember Me</label>
+        </div>
         <button type="submit" name="submit">Enter</button>
         <p>No profile? <a href="${pageContext.request.contextPath}/register">Register</a></p>
     </form>

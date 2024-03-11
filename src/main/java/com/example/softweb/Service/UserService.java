@@ -10,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -31,12 +30,15 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
-    @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        if (login == null || login.trim().isEmpty()) {
+            throw new UsernameNotFoundException("Invalid login");
+        }
+
         User user = userRepository.findByLogin(login);
 
-        if (login == null) {
-            throw new UsernameNotFoundException("User not found");
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with login: " + login);
         }
 
         return new org.springframework.security.core.userdetails.User(
@@ -47,6 +49,7 @@ public class UserService implements UserDetailsService {
                         .collect(Collectors.toList())
         );
     }
+
     public User findUserById(Long id){
         Optional<User> user = userRepository.findById(id);
         return user.orElse(new User());
@@ -56,25 +59,17 @@ public class UserService implements UserDetailsService {
     }
 
     public boolean saveUser(User user) {
-        User existingUser = userRepository.findByLogin(user.getLogin());
+        User userFromDB = userRepository.findByLogin(user.getUsername());
 
-        if (existingUser != null) {
+        if (userFromDB != null) {
             return false;
         }
 
-        // Используйте роли из базы данных, найденные по их именам
-        Set<Role> userRoles = user.getRoles().stream()
-                .map(role -> roleRepository.findByLogin(role.getLogin()))
-                .collect(Collectors.toSet());
-
-        // Установите роли для пользователя
-        user.setRoles(userRoles);
-
-        // Сохраните пользователя вместе с ролями
+        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         userRepository.save(user);
-
         return true;
     }
+
 
     public boolean deleteUser(Long id){
         if(userRepository.findById(id).isPresent()){
