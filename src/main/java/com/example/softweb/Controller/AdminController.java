@@ -16,6 +16,7 @@ public class AdminController {
     @Autowired
     public UserService userService;
 
+
     @GetMapping("/admin")
     public String userList(Model model) {
         model.addAttribute("allUser", userService.allUsers());

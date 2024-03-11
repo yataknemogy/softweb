@@ -47,5 +47,6 @@ public class RegisterController {
     public String handleException(Exception e) {
         return "error";
     }
+
 }
 
