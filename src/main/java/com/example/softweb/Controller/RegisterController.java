@@ -17,6 +17,7 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping
     public String showRegistrationForm(Model model) {
         model.addAttribute("userForm", new User());
