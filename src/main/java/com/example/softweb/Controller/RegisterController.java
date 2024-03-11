@@ -40,7 +40,7 @@ public class RegisterController {
 
         userService.saveUser(userForm);
 
-        return "redirect:/register-success";
+        return "register-success";
     }
 
     @ExceptionHandler(Exception.class)
