@@ -33,6 +33,7 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
+
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         if (login == null || login.trim().isEmpty()) {
             throw new UsernameNotFoundException("Invalid login");
