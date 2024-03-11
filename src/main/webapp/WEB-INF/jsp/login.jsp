@@ -7,6 +7,9 @@
     <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>
 <body>
+<sec:authorize access="isAuthenticated()">
+    <% response.sendRedirect("/login-success"); %>
+</sec:authorize>
 <div class="container">
     <form action="/login" method="post">
         <h2>Log in to Your Account</h2>
