@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/static/style.css"/>">
     <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>
-
 <body>
 <div class="container">
     <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/register/register">

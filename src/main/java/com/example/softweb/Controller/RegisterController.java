@@ -1,6 +1,5 @@
 package com.example.softweb.Controller;
 
-import com.example.softweb.Model.Role;
 import com.example.softweb.Model.User;
 import com.example.softweb.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

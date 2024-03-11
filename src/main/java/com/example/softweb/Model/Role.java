@@ -27,7 +27,6 @@ public class Role implements GrantedAuthority {
 
     }
 
-
     public Long getId() {
         return id;
     }
@@ -64,7 +63,6 @@ public class Role implements GrantedAuthority {
         Role role = (Role) o;
         return Objects.equals(login, role.login);
     }
-
 
     @Override
     public int hashCode() {
