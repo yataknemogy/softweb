@@ -8,7 +8,7 @@
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
-    <% response.sendRedirect("/login-success"); %>
+    <% response.sendRedirect("/"); %>
 </sec:authorize>
 <div class="container">
     <form action="/login" method="post">
