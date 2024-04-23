@@ -21,4 +21,4 @@
 - Реализована настройка 'Запомнить меня'.
 - Разработан пользовательский обработчик для случаев доступа к запрещенным ресурсам.
 
-[EN](docs/README_EN.MD) | [JP](docs/README_JP.MD)
+[EN](docs/README_EN.MD) | [JP](docs/README_JP.MD) | [DE](docs/README_DE.MD)
