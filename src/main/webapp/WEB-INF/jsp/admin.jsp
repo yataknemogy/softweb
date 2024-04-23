@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Log in with your account</title>
+    <title>Admin</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/static/style.css"/>">
     <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>

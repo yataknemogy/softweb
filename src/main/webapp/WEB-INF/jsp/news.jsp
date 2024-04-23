@@ -10,11 +10,8 @@
     <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/spring.png">
 </head>
 <body>
-<sec:authorize access="isAuthenticated()">
-    <% response.sendRedirect("/"); %>
-</sec:authorize>
 <div>
-    <form method="POST" action="/login">
+    <form method="POST" action="/news">
         <h2>Вход в систему</h2>
         <div>
             <input name="username" type="text" placeholder="Username" autofocus="true"/>
